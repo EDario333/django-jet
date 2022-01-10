@@ -27,13 +27,13 @@ def get_install_requires():
     return install_requires
 
 setup(
-    name='django-3-jet',
-    version=__import__('jet').VERSION,
-    description='Modern template for Django-3 admin interface with improved functionality',
+    name='django-4-jet',
+    version='1.0.8',
+    description='Modern template for Django-4 admin interface with improved functionality',
     long_description=read('README.rst'),
-    author='Denis Kildishev',
-    author_email='barukimang@gmail.com',
-    url='https://github.com/Barukimang/django-jet/',
+    author='Edgar Ramirez',
+    author_email='edario.ram.le@gmail.com',
+    url='https://github.com/EDario333/django-jet',
     packages=find_packages(),
     license='AGPLv3',
     classifiers=[
@@ -50,6 +50,7 @@ setup(
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.10',
         'Environment :: Web Environment',
         'Topic :: Software Development',
         'Topic :: Software Development :: User Interfaces',
