@@ -250,11 +250,31 @@ def get_model_queryset(admin_site, model, request, preserved_filters=None):
         # django version < 2.1
         pass
 
+    '''
+    ModelAdmin.search_help_text was introduced in Django 4.0.
+
+    Set search_help_text to specify a descriptive text for the search box which will be displayed below it.
+
+    See: https://docs.djangoproject.com/en/4.0/ref/contrib/admin/#django.contrib.admin.ModelAdmin.search_help_text
+    '''
+    search_help_text = ''
+
     try:
         cl = ChangeList(*change_list_args)
         queryset = cl.get_queryset(request)
     except IncorrectLookupParameters:
         pass
+    except Exception as e:
+        if 'search_help_text' in e.args[0]:
+            try:
+                search_help_text = model_admin.get_search_help_text(request)
+            except AttributeError:
+                # django version < 4
+                ...
+    finally:
+        change_list_args.append(search_help_text)
+        cl = ChangeList(*change_list_args)
+        queryset = cl.get_queryset(request)
 
     return queryset
 
